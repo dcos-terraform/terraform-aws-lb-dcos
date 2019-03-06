@@ -50,7 +50,7 @@ module "dcos-lb-masters" {
   }
   cluster_name       = "${var.cluster_name}"
   subnet_ids         = ["${var.subnet_ids}"]
-  security_groups    = ["${var.security_groups_masters}"]
+  security_groups    = ["${var.security_groups_masters}", "${var.security_groups_masters_internal}"]
   instances          = ["${var.master_instances}"]
   https_acm_cert_arn = "${var.masters_acm_cert_arn}"
   internal           = "${var.internal}"
