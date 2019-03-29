@@ -54,7 +54,9 @@ module "dcos-lb-masters" {
   instances          = ["${var.master_instances}"]
   https_acm_cert_arn = "${var.masters_acm_cert_arn}"
   internal           = "${var.internal}"
+  disable            = "${var.disable_masters}"
   num_instances      = "${var.num_masters}"
+  name_prefix        = "${var.name_prefix}"
   tags               = "${var.tags}"
 }
 
@@ -71,8 +73,10 @@ module "dcos-lb-masters-internal" {
   subnet_ids         = ["${var.subnet_ids}"]
   security_groups    = ["${var.security_groups_masters_internal}"]
   instances          = ["${var.master_instances}"]
+  disable            = "${var.disable_masters}"
   https_acm_cert_arn = "${var.masters_internal_acm_cert_arn}"
   num_instances      = "${var.num_masters}"
+  name_prefix        = "${var.name_prefix}"
   tags               = "${var.tags}"
 }
 
@@ -91,7 +95,9 @@ module "dcos-lb-public-agents" {
   instances           = ["${var.public_agent_instances}"]
   https_acm_cert_arn  = "${var.public_agents_acm_cert_arn}"
   internal            = "${var.internal}"
+  disable             = "${var.disable_public_agents}"
   num_instances       = "${var.num_public_agents}"
+  name_prefix         = "${var.name_prefix}"
   additional_listener = ["${var.public_agents_additional_listeners}"]
   tags                = "${var.tags}"
 }

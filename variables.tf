@@ -18,6 +18,21 @@ variable "security_groups_masters" {
   type        = "list"
 }
 
+variable "disable_masters" {
+  description = "[MASTERS] Do not create load balancer and its resources"
+  default     = false
+}
+
+variable "disable_public_agents" {
+  description = "[PUBLIC AGENTS] Do not create load balancer and its resources"
+  default     = false
+}
+
+variable "name_prefix" {
+  description = "Name Prefix"
+  default     = ""
+}
+
 variable "security_groups_masters_internal" {
   description = "Security Group IDs to use for internal communication to masters"
   type        = "list"
