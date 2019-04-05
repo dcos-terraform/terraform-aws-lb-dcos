@@ -46,6 +46,7 @@ module "dcos-lb-masters" {
   providers = {
     aws = "aws"
   }
+
   cluster_name       = "${var.cluster_name}"
   subnet_ids         = ["${var.subnet_ids}"]
   security_groups    = ["${var.security_groups_masters}", "${var.security_groups_masters_internal}"]
@@ -65,6 +66,7 @@ module "dcos-lb-masters-internal" {
   providers = {
     aws = "aws"
   }
+
   cluster_name       = "${var.cluster_name}"
   subnet_ids         = ["${var.subnet_ids}"]
   security_groups    = ["${var.security_groups_masters_internal}"]
@@ -83,6 +85,7 @@ module "dcos-lb-public-agents" {
   providers = {
     aws = "aws"
   }
+
   cluster_name        = "${var.cluster_name}"
   subnet_ids          = ["${var.subnet_ids}"]
   security_groups     = ["${var.security_groups_public_agents}"]
