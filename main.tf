@@ -40,10 +40,8 @@
 provider "aws" {}
 
 module "dcos-lb-masters" {
-  source = "dcos-terraform/lb-masters/aws"
-
-  # source  = "dcos-terraform/elb-masters/aws"
-  # version = "~> 0.2.0"
+  source  = "dcos-terraform/lb-masters/aws"
+  version = "~> 0.2.0"
 
   providers = {
     aws = "aws"
@@ -61,10 +59,8 @@ module "dcos-lb-masters" {
 }
 
 module "dcos-lb-masters-internal" {
-  source = "dcos-terraform/lb-masters-internal/aws"
-
-  # source  = "dcos-terraform/elb-masters-internal/aws"
-  # version = "~> 0.2.0"
+  source  = "dcos-terraform/lb-masters-internal/aws"
+  version = "~> 0.2.0"
 
   providers = {
     aws = "aws"
@@ -81,10 +77,8 @@ module "dcos-lb-masters-internal" {
 }
 
 module "dcos-lb-public-agents" {
-  source = "dcos-terraform/lb-public-agents/aws"
-
-  # source  = "dcos-terraform/elb-public-agents/aws"
-  # version = "~> 0.2.0"
+  source  = "dcos-terraform/lb-public-agents/aws"
+  version = "~> 0.2.0"
 
   providers = {
     aws = "aws"
