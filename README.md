@@ -40,22 +40,22 @@ module "dcos-lbs" {
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
 | cluster\_name | Name of the DC/OS cluster | string | n/a | yes |
-| disable\_masters | [MASTERS] Do not create load balancer and its resources | string | `"false"` | no |
-| disable\_public\_agents | [PUBLIC AGENTS] Do not create load balancer and its resources | string | `"false"` | no |
-| internal | This ELB is internal only | string | `"false"` | no |
 | master\_instances | List of master instance IDs | list | n/a | yes |
-| masters\_acm\_cert\_arn | ACM certifacte to be used for the masters load balancer | string | `""` | no |
-| masters\_internal\_acm\_cert\_arn | ACM certifacte to be used for the internal masters load balancer | string | `""` | no |
-| name\_prefix | Name Prefix | string | `""` | no |
 | num\_masters | Specify the amount of masters. For redundancy you should have at least 3 | string | n/a | yes |
 | num\_public\_agents | Specify the amount of public agents. These agents will host marathon-lb and edgelb | string | n/a | yes |
 | public\_agent\_instances | List of public agent instance IDs | list | n/a | yes |
-| public\_agents\_acm\_cert\_arn | ACM certifacte to be used for the public agents load balancer | string | `""` | no |
-| public\_agents\_additional\_listeners | Additional list of listeners for public agents. These listeners are an additon to the default listeners. | list | `<list>` | no |
 | security\_groups\_masters | Security Group IDs to use for external masters load balancer | list | n/a | yes |
 | security\_groups\_masters\_internal | Security Group IDs to use for internal communication to masters | list | n/a | yes |
 | security\_groups\_public\_agents | Security Group IDs to use for external public agents load balancer | list | n/a | yes |
 | subnet\_ids | List of subnet IDs created in this network | list | n/a | yes |
+| disable\_masters | [MASTERS] Do not create load balancer and its resources | string | `"false"` | no |
+| disable\_public\_agents | [PUBLIC AGENTS] Do not create load balancer and its resources | string | `"false"` | no |
+| internal | This ELB is internal only | string | `"false"` | no |
+| masters\_acm\_cert\_arn | ACM certifacte to be used for the masters load balancer | string | `""` | no |
+| masters\_internal\_acm\_cert\_arn | ACM certifacte to be used for the internal masters load balancer | string | `""` | no |
+| name\_prefix | Name Prefix | string | `""` | no |
+| public\_agents\_acm\_cert\_arn | ACM certifacte to be used for the public agents load balancer | string | `""` | no |
+| public\_agents\_additional\_listeners | Additional list of listeners for public agents. These listeners are an additon to the default listeners. | list | `<list>` | no |
 | tags | Add custom tags to all resources | map | `<map>` | no |
 
 ## Outputs
