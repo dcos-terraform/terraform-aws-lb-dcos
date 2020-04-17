@@ -61,7 +61,7 @@ module "dcos-lb-masters" {
 
 module "dcos-lb-masters-internal" {
   source  = "dcos-terraform/lb-masters-internal/aws"
-  version = "~> 0.2.0"
+  version = "~> 0.2.1"
 
   providers = {
     aws = "aws"
