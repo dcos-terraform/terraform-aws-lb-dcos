@@ -61,21 +61,22 @@ module "dcos-lb-masters" {
 
 module "dcos-lb-masters-internal" {
   source  = "dcos-terraform/lb-masters-internal/aws"
-  version = "~> 0.2.0"
+  version = "~> 0.2.1"
 
   providers = {
     aws = "aws"
   }
 
-  cluster_name       = "${var.cluster_name}"
-  subnet_ids         = ["${var.subnet_ids}"]
-  security_groups    = ["${var.security_groups_masters_internal}"]
-  instances          = ["${var.master_instances}"]
-  disable            = "${var.disable_masters}"
-  https_acm_cert_arn = "${var.masters_internal_acm_cert_arn}"
-  num_instances      = "${var.num_masters}"
-  name_prefix        = "${var.name_prefix}"
-  tags               = "${var.tags}"
+  cluster_name                = "${var.cluster_name}"
+  subnet_ids                  = ["${var.subnet_ids}"]
+  security_groups             = ["${var.security_groups_masters_internal}"]
+  instances                   = ["${var.master_instances}"]
+  disable                     = "${var.disable_masters}"
+  https_acm_cert_arn          = "${var.masters_internal_acm_cert_arn}"
+  num_instances               = "${var.num_masters}"
+  name_prefix                 = "${var.name_prefix}"
+  tags                        = "${var.tags}"
+  adminrouter_grpc_proxy_port = "${var.adminrouter_grpc_proxy_port}"
 }
 
 module "dcos-lb-public-agents" {
