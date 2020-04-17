@@ -48,6 +48,7 @@ module "dcos-lbs" {
 | security\_groups\_masters\_internal | Security Group IDs to use for internal communication to masters | list | n/a | yes |
 | security\_groups\_public\_agents | Security Group IDs to use for external public agents load balancer | list | n/a | yes |
 | subnet\_ids | List of subnet IDs created in this network | list | n/a | yes |
+| adminrouter\_grpc\_proxy\_port |  | string | `"12379"` | no |
 | disable\_masters | [MASTERS] Do not create load balancer and its resources | string | `"false"` | no |
 | disable\_public\_agents | [PUBLIC AGENTS] Do not create load balancer and its resources | string | `"false"` | no |
 | internal | This ELB is internal only | string | `"false"` | no |
