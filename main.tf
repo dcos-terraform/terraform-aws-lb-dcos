@@ -37,65 +37,68 @@
  *```
  */
 
-provider "aws" {}
+provider "aws" {
+  version = ">= 2.58"
+}
 
 module "dcos-lb-masters" {
   source  = "dcos-terraform/lb-masters/aws"
-  version = "~> 0.2.0"
+  version = "~> 0.3.0"
 
   providers = {
-    aws = "aws"
+    aws = aws
   }
 
-  cluster_name       = "${var.cluster_name}"
-  subnet_ids         = ["${var.subnet_ids}"]
-  security_groups    = ["${var.security_groups_masters}", "${var.security_groups_masters_internal}"]
-  instances          = ["${var.master_instances}"]
-  https_acm_cert_arn = "${var.masters_acm_cert_arn}"
-  internal           = "${var.internal}"
-  disable            = "${var.disable_masters}"
-  num_instances      = "${var.num_masters}"
-  name_prefix        = "${var.name_prefix}"
-  tags               = "${var.tags}"
+  cluster_name       = var.cluster_name
+  subnet_ids         = var.subnet_ids
+  security_groups    = concat(var.security_groups_masters, var.security_groups_masters_internal)
+  instances          = var.master_instances
+  https_acm_cert_arn = var.masters_acm_cert_arn
+  internal           = var.internal
+  disable            = var.disable_masters
+  num_instances      = var.num_masters
+  name_prefix        = var.name_prefix
+  tags               = var.tags
 }
 
 module "dcos-lb-masters-internal" {
   source  = "dcos-terraform/lb-masters-internal/aws"
-  version = "~> 0.2.1"
+  version = "~> 0.3.0"
 
   providers = {
-    aws = "aws"
+    aws = aws
   }
 
-  cluster_name                = "${var.cluster_name}"
-  subnet_ids                  = ["${var.subnet_ids}"]
-  security_groups             = ["${var.security_groups_masters_internal}"]
-  instances                   = ["${var.master_instances}"]
-  disable                     = "${var.disable_masters}"
-  https_acm_cert_arn          = "${var.masters_internal_acm_cert_arn}"
-  num_instances               = "${var.num_masters}"
-  name_prefix                 = "${var.name_prefix}"
-  tags                        = "${var.tags}"
-  adminrouter_grpc_proxy_port = "${var.adminrouter_grpc_proxy_port}"
+  cluster_name                = var.cluster_name
+  subnet_ids                  = var.subnet_ids
+  security_groups             = var.security_groups_masters_internal
+  instances                   = var.master_instances
+  disable                     = var.disable_masters
+  https_acm_cert_arn          = var.masters_internal_acm_cert_arn
+  num_instances               = var.num_masters
+  name_prefix                 = var.name_prefix
+  tags                        = var.tags
+  adminrouter_grpc_proxy_port = var.adminrouter_grpc_proxy_port
 }
 
 module "dcos-lb-public-agents" {
   source  = "dcos-terraform/lb-public-agents/aws"
-  version = "~> 0.2.0"
+  version = "~> 0.3.0"
 
   providers = {
-    aws = "aws"
+    aws = aws
   }
 
-  cluster_name        = "${var.cluster_name}"
-  subnet_ids          = ["${var.subnet_ids}"]
-  security_groups     = ["${var.security_groups_public_agents}"]
-  instances           = ["${var.public_agent_instances}"]
-  https_acm_cert_arn  = "${var.public_agents_acm_cert_arn}"
-  internal            = "${var.internal}"
-  disable             = "${var.disable_public_agents}"
-  num_instances       = "${var.num_public_agents}"
-  name_prefix         = "${var.name_prefix}"
-  additional_listener = ["${var.public_agents_additional_listeners}"]
-  tags                = "${var.tags}"
+  cluster_name        = var.cluster_name
+  subnet_ids          = var.subnet_ids
+  security_groups     = var.security_groups_public_agents
+  instances           = var.public_agent_instances
+  https_acm_cert_arn  = var.public_agents_acm_cert_arn
+  internal            = var.internal
+  disable             = var.disable_public_agents
+  num_instances       = var.num_public_agents
+  name_prefix         = var.name_prefix
+  additional_listener = var.public_agents_additional_listeners
+  tags                = var.tags
 }
+
