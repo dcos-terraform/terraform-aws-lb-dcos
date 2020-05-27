@@ -42,8 +42,8 @@ provider "aws" {
 }
 
 module "dcos-lb-masters" {
-  source  = "dcos-terraform/lb-masters/aws"
-  version = "~> 0.3.0"
+  source  = "../terraform-aws-lb-masters"
+  #version = "~> 0.3.0"
 
   providers = {
     aws = aws
@@ -62,8 +62,8 @@ module "dcos-lb-masters" {
 }
 
 module "dcos-lb-masters-internal" {
-  source  = "dcos-terraform/lb-masters-internal/aws"
-  version = "~> 0.3.0"
+  source  = "../terraform-aws-lb-masters-internal"
+  #version = "~> 0.3.0"
 
   providers = {
     aws = aws
@@ -82,8 +82,8 @@ module "dcos-lb-masters-internal" {
 }
 
 module "dcos-lb-public-agents" {
-  source  = "dcos-terraform/lb-public-agents/aws"
-  version = "~> 0.3.0"
+  source  = "../terraform-aws-lb-public-agents"
+  #version = "~> 0.3.0"
 
   providers = {
     aws = aws
