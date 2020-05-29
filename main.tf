@@ -21,7 +21,7 @@
  *```hcl
  * module "dcos-lbs" {
  *   source  = "dcos-terraform/lb-dcos/aws"
- *   version = "~> 0.2.0"
+ *   version = "~> 0.3.0"
  *
  *   cluster_name = "production"
  *
@@ -42,8 +42,8 @@ provider "aws" {
 }
 
 module "dcos-lb-masters" {
-  source  = "../terraform-aws-lb-masters"
-  #version = "~> 0.3.0"
+  source  = "dcos-terraform/lb-masters/aws"
+  version = "~> 0.3.0"
 
   providers = {
     aws = aws
@@ -62,8 +62,8 @@ module "dcos-lb-masters" {
 }
 
 module "dcos-lb-masters-internal" {
-  source  = "../terraform-aws-lb-masters-internal"
-  #version = "~> 0.3.0"
+  source  = "dcos-terraform/lb-masters-internal/aws"
+  version = "~> 0.3.0"
 
   providers = {
     aws = aws
@@ -82,8 +82,8 @@ module "dcos-lb-masters-internal" {
 }
 
 module "dcos-lb-public-agents" {
-  source  = "../terraform-aws-lb-public-agents"
-  #version = "~> 0.3.0"
+  source  = "dcos-terraform/lb-public-agents/aws"
+  version = "~> 0.3.0"
 
   providers = {
     aws = aws
