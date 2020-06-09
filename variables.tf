@@ -4,18 +4,18 @@ variable "cluster_name" {
 
 variable "tags" {
   description = "Add custom tags to all resources"
-  type        = "map"
+  type        = map(string)
   default     = {}
 }
 
 variable "subnet_ids" {
   description = "List of subnet IDs created in this network"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "security_groups_masters" {
   description = "Security Group IDs to use for external masters load balancer"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "disable_masters" {
@@ -35,22 +35,22 @@ variable "name_prefix" {
 
 variable "security_groups_masters_internal" {
   description = "Security Group IDs to use for internal communication to masters"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "security_groups_public_agents" {
   description = "Security Group IDs to use for external public agents load balancer"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "master_instances" {
   description = "List of master instance IDs"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "public_agent_instances" {
   description = "List of public agent instance IDs"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "masters_acm_cert_arn" {
@@ -70,7 +70,7 @@ variable "public_agents_acm_cert_arn" {
 
 variable "public_agents_additional_listeners" {
   description = "Additional list of listeners for public agents. These listeners are an additon to the default listeners."
-  type        = "list"
+  type        = list(string)
   default     = []
 }
 
@@ -91,3 +91,4 @@ variable "adminrouter_grpc_proxy_port" {
   description = ""
   default     = 12379
 }
+
